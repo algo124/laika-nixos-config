@@ -16,7 +16,7 @@ home-manager.users.algo = {
 				density = "default";
 				position = "top";
 				floating = true;
-				backgroundOpacity = 0.9;
+				backgroundOpacity = 0.95;
 				marginVertical = 5;
 				marginHorizontal = 5;
 				displayMode = "always_visible";
@@ -42,21 +42,26 @@ home-manager.users.algo = {
 						labelMode = "none";
 					}];
 					right = [{
+						id = "plugin:notes-scratchpad";
+						fontSize = "15";
+					} {
 						id = "Volume";
 					} {
 						id = "Network";
 					} {
 						id = "Bluetooth";
 					} {
-						alwaysShowPercentage = false;
-						id = "Battery";
-						warningThreshold = 30;
+						id = "plugin:pomodoro";
 					} {
 						formatHorizontal = "HH:mm";
 						formatVertical = "HH mm";
 						id = "Clock";
 						useMonospacedFont = true;
 						usePrimaryColor = true;
+					} {
+						alwaysShowPercentage = true;
+						id = "Battery";
+						warningThreshold = 20;
 					}];
 				};
 			};
@@ -74,7 +79,7 @@ home-manager.users.algo = {
 			ui = {
 				fontDefault = "Noto Sans";
 				fontFixed = "Fira Code";
-				panelBackgroundOpacity = 0.9;
+				panelBackgroundOpacity = 0.95;
 
 			};
 			location = {
@@ -115,6 +120,23 @@ home-manager.users.algo = {
 			      		} {
 						id = "NightLight";
 					}];
+				};
+			};
+		};
+		plugins = {
+			sources = [{
+				enabled = true;
+				name = "Official Noctalia Plugins";
+				url = "https://github.com/noctalia-dev/noctalia-plugins";
+			}];
+			states = {
+				notes-scratchpad = {
+					enabled = true;
+					sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+				};
+				pomodoro = {
+					enabled = true;
+					sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
 				};
 			};
 		};

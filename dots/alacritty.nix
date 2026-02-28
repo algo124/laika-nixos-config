@@ -8,7 +8,7 @@ programs.alacritty = {
 			x = 5;
 			y = 5;
 		};
-		window.opacity = 0.9;
+		window.opacity = 0.8;
 	};
 };
 

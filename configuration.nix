@@ -1,4 +1,29 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }:
+
+let
+
+# reaper-wrapped script credit to Man2 of the NixOS Discord.
+# Gets Reaper plugins like spectral-compressor working
+reaper-wrapped = pkgs.symlinkJoin {
+	name = "reaper-wrapped";
+	paths = [ pkgs.reaper ];
+	buildInputs = [ pkgs.makeWrapper ];
+	postBuild = ''
+		wrapProgram $out/bin/reaper \
+		--prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath [
+			pkgs.libxcb
+			pkgs.xcbutilwm
+			pkgs.libX11
+			pkgs.libXcursor
+			pkgs.libXrandr
+			pkgs.libGL
+		]}
+	'';
+};
+
+in
+
+{
 
 boot.loader = {
 	systemd-boot.enable = true;
@@ -6,11 +31,16 @@ boot.loader = {
 	efi.canTouchEfiVariables = true;
 };
 
+# Networking
 networking.hostName = "laika";
 networking.networkmanager.enable = true;
-# Allows easy connection to public wifi.
-networking.resolvconf.dnsExtensionMechanism = false;
 hardware.bluetooth.enable = true;
+# Allows easy connection to public wifi.
+networking.wireless.enable = true;
+networking.resolvconf.dnsExtensionMechanism = false;
+networking.wireless.userControlled = true;
+
+# Power
 services.power-profiles-daemon.enable = true;
 services.upower.enable = true;
 
@@ -53,6 +83,7 @@ users.users.algo = {
 
 nixpkgs.config.allowUnfree = true;
 # nix.settings.experimental-features = [ "nix-command" "flakes" ];
+musnix.enable = true;
 
 services.displayManager.sddm = {
 	enable = true;
@@ -91,26 +122,29 @@ fonts.packages = with pkgs; [
 ];
 
 environment.systemPackages = with pkgs; [
-	# Basics
-	vim neovim
+	# Command Line Tools
+	nano vim neovim
 	wget
-	fastfetch
+	fastfetch # alias: ff
+	ripgrep # command: rg
+	bat # cat alt
+	eza # ls alt
 	openssh
-	git gh
+	git gh # git & git cli
 	unzip
 	toybox # Unix Command Line Utils
 	ffmpeg
 	dbus
 	dunst
-	xdg-desktop-portal
-	xdg-desktop-portal-gtk
 	wl-clipboard cliphist
-	brightnessctl
-	playerctl
+	brightnessctl playerctl
 	imagemagick
 	meh
 	catppuccinifier-cli
+	# Basics
 	electron
+	xdg-desktop-portal
+	xdg-desktop-portal-gtk
 	# Applications
 	vlc
 	alacritty
@@ -123,19 +157,26 @@ environment.systemPackages = with pkgs; [
 	bitwarden-desktop
 	obsidian # May need --disable-gpu
 	shotwell
-	# Sound
-	pwvucontrol
-	wireplumber
-	qpwgraph
-	# Appearance
+	# Theme
 	(pkgs.catppuccin-sddm.override {
 		flavor = "mocha";
 		accent = "pink";
 	})
 	catppuccin-cursors.mochaPink
-	hyprpaper
-	hyprpolkitagent
-	hyprshot
+	# Hyprland
+	hyprpaper hyprpolkitagent hyprshot
+	# KDE Packages
+	kdePackages.ktorrent
+	kdePackages.kdenlive
+	# Sound & Musicking
+	pwvucontrol wireplumber qpwgraph
+	winetricks wineWow64Packages.yabridge
+	yabridge yabridgectl
+	alsa-lib alsa-utils
+	reaper-wrapped
+	# Music Plugins
+	decent-sampler surge-xt plugdata vital
+	airwindows-lv2 chow-tape-model
 ];
 
 }

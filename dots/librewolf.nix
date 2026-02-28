@@ -10,6 +10,9 @@ programs.librewolf = {
 		"privacy.clearOnShutdown.cookies" = false;
 		"network.cookie.lifetimePolicy" = 0;
 		"identity.fxaccounts.enabled" = true;
+		"privacy.trackingprotection.enabled" = true;
+		"privacy.trackingprotection.socialtracking.enabled" = true;
+		"privacy.trackingprotection.emailtracking.enabled" = true;
     	};
 };
 
