@@ -18,6 +18,7 @@ imports = [
 	./dots/hyprland.nix
 	./dots/hyprpaper.nix
 	./dots/librewolf.nix
+	./dots/mpd.nix
 ];
 
 }

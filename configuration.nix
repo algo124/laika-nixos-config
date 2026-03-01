@@ -51,6 +51,7 @@ i18n.extraLocaleSettings = {
 	LC_ALL = "en_US.UTF-8";
 };  
 
+# Sound
 services.pipewire = {
 	enable = true;
 	pulse.enable = true;
@@ -58,6 +59,7 @@ services.pipewire = {
 	jack.enable = true;
 };
 
+# Syncthing
 services.syncthing = {
 	enable = true;
 	openDefaultPorts = true;
@@ -99,7 +101,7 @@ programs.hyprland = {
 	xwayland.enable = true;
 };
 
-
+# Thunar
 programs.thunar.enable = true;
 programs.thunar.plugins = with pkgs; [
 	thunar-archive-plugin
@@ -112,6 +114,21 @@ services = {
 	tumbler.enable = true;
 };
 
+# Thunar to Use Alacritty
+xdg.terminal-exec = {
+	enable = true;
+	settings = {
+		default = [ "alacritty.desktop" ];
+	};
+};
+
+# Neovim
+programs.neovim = {
+	enable = true;
+	defaultEditor = true;
+};
+
+# Fonts
 fonts.packages = with pkgs; [ 
 	noto-fonts
 	noto-fonts-cjk-sans
@@ -121,9 +138,17 @@ fonts.packages = with pkgs; [
 	fira-code-symbols
 ];
 
+# Environment Variables
+environment.variables = {
+	EDITOR = "nvim";
+	TERMINAL = "alacritty";
+	BROWSER = "librewolf";
+};
+
+# Packages
 environment.systemPackages = with pkgs; [
 	# Command Line Tools
-	nano vim neovim
+	nano vim
 	wget
 	fastfetch # alias: ff
 	ripgrep # command: rg
@@ -141,6 +166,9 @@ environment.systemPackages = with pkgs; [
 	imagemagick
 	meh
 	catppuccinifier-cli
+	# Programming Languages + Packages
+	python314
+	python314Packages.pydbus
 	# Basics
 	electron
 	xdg-desktop-portal
@@ -170,6 +198,7 @@ environment.systemPackages = with pkgs; [
 	kdePackages.kdenlive
 	# Sound & Musicking
 	pwvucontrol wireplumber qpwgraph
+	euphonica
 	winetricks wineWow64Packages.yabridge
 	yabridge yabridgectl
 	alsa-lib alsa-utils
