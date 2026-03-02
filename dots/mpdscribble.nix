@@ -3,8 +3,13 @@
 
 services.mpdscribble = {
 	enable = true;
-	endpoints."last.fm".username = "algorae";
-	endpoints."last.fm".passwordFile = "/home/algo/Documents/Passwords/lastfmpassword.txt";
+	journalInterval = 60;
+	endpoints = {
+		"last.fm" = {
+			username = "algorae";
+			passwordFile = "/home/algo/Documents/Passwords/lastfmpassword.txt";
+		};
+	};
 };
 
 
