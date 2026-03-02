@@ -9,7 +9,7 @@ programs.fish = {
 	};
 	functions = {
 		clean = "sudo nix-collect-garbage && nix-store --optimise -vv";
-		dots = "cd /etc/nixos && ls";
+		dots = "cd /etc/nixos && eza";
 		ff = "fastfetch";
 		reboot = "sudo reboot -f";
 		rebuild = "sudo nixos-rebuild switch";

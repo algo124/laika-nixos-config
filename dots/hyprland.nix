@@ -12,10 +12,14 @@ wayland.windowManager.hyprland.settings = {
 	"$ipc" = "noctalia-shell ipc call";
 	# BINDS
 	bind = [
-		"$mod, T, exec, alacritty"
+		"$mod, Q, exec, element-desktop"
 		"$mod, W, exec, thunar"
 		"$mod, E, exec, librewolf"
 		"$mod, R, exec, $ipc launcher toggle"
+		"$mod, T, exec, alacritty"
+		# mod y goes here
+		"$mod, U, exec, euphonica"
+		"$mod, O, exec, obsidian"
 		", F9, exec, grimblast copy area"
 		"$mod, K, killactive"
 		"$mod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"

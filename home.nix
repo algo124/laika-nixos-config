@@ -19,6 +19,7 @@ imports = [
 	./dots/hyprpaper.nix
 	./dots/librewolf.nix
 	./dots/mpd.nix
+	./dots/mpdscribble.nix
 ];
 
 }

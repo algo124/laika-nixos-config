@@ -165,10 +165,11 @@ environment.systemPackages = with pkgs; [
 	brightnessctl playerctl
 	imagemagick
 	meh
+	dxvk # DXVK setup script
 	catppuccinifier-cli
 	# Programming Languages + Packages
-	python314
-	python314Packages.pydbus
+	python313
+	python313Packages.dbus-python
 	# Basics
 	electron
 	xdg-desktop-portal
@@ -198,7 +199,7 @@ environment.systemPackages = with pkgs; [
 	kdePackages.kdenlive
 	# Sound & Musicking
 	pwvucontrol wireplumber qpwgraph
-	euphonica
+	euphonica nicotine-plus # Soulseek client
 	winetricks wineWow64Packages.yabridge
 	yabridge yabridgectl
 	alsa-lib alsa-utils

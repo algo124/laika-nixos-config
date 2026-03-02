@@ -3,8 +3,15 @@
 
 services.mpd = {
 	enable = true;
-	musicDirectory = "/home/algo/Music";
-	network.startWhenNeeded = true;
+	musicDirectory = "~/Music";
+	extraConfig = ''
+		bind_to_address "localhost"
+		port "6600"
+      		audio_output {
+        		type            "pipewire"
+        		name            "PipeWire Sound Server"
+      		}
+      	'';
 };
 
 }
