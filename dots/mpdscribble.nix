@@ -4,7 +4,7 @@
 services.mpdscribble = {
 	enable = true;
 	endpoints."last.fm".username = "algorae";
-	endpoints."last.fm".passwordFile = "~/Documents/Passwords/lastfmpassword.txt";
+	endpoints."last.fm".passwordFile = "/home/algo/Documents/Passwords/lastfmpassword.txt";
 };
 
 
