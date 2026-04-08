@@ -42,9 +42,6 @@ home-manager.users.algo = {
 						labelMode = "none";
 					}];
 					right = [{
-						id = "plugin:notes-scratchpad";
-						fontSize = "15";
-					} {
 						id = "Volume";
 					} {
 						id = "Network";
@@ -130,10 +127,6 @@ home-manager.users.algo = {
 				url = "https://github.com/noctalia-dev/noctalia-plugins";
 			}];
 			states = {
-				notes-scratchpad = {
-					enabled = true;
-					sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-				};
 				pomodoro = {
 					enabled = true;
 					sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";

@@ -14,6 +14,7 @@ programs.fish = {
 		reboot = "sudo reboot -f";
 		rebuild = "sudo nixos-rebuild switch";
 		show-dots = "sudo nvim -p *.nix dots/*.nix";
+		upgrade = "sudo nixos-rebuild switch --upgrade";
 	};
 };
 
