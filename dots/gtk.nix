@@ -1,8 +1,9 @@
 # GTK Configuration
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
 
 gtk = {
 	enable = true;
+	gtk4.theme = config.gtk.theme;
 	theme = {
 		name = "catppuccin-mocha-pink-standard";
 		package = pkgs.catppuccin-gtk.override {
