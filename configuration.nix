@@ -25,10 +25,15 @@ in
 
 {
 
+# Temp (?)
+nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
+
+# Boot Loader
 boot.loader = {
 	systemd-boot.enable = true;
 	systemd-boot.configurationLimit = 3;
 	efi.canTouchEfiVariables = true;
+	timeout = 10;
 };
 
 # Networking
@@ -44,12 +49,10 @@ networking.wireless.userControlled = true;
 services.power-profiles-daemon.enable = true;
 services.upower.enable = true;
 
+# Locale
 time.timeZone = "America/Los_Angeles";
-
 i18n.defaultLocale = "en_US.UTF-8";
-i18n.extraLocaleSettings = {
-	LC_ALL = "en_US.UTF-8";
-};  
+i18n.extraLocaleSettings = { LC_ALL = "en_US.UTF-8"; };  
 
 # Sound
 services.pipewire = {
@@ -68,13 +71,17 @@ services.syncthing = {
 	dataDir = "/home/algo";
 };
 
+# Misc
 system.stateVersion = "25.11";
-
 services.journald.extraConfig = "SystemMaxUse=100M";
 services.libinput.enable = true;
-
 programs.fish.enable = true;
+nixpkgs.config.allowUnfree = true;
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
+musnix.enable = true;
 
+
+# Users
 users.users.algo = {
   	isNormalUser = true;
 	extraGroups = [ "wheel" "audio" "networkmanager" ];
@@ -83,10 +90,7 @@ users.users.algo = {
 	useDefaultShell = true;
 };
 
-nixpkgs.config.allowUnfree = true;
-# nix.settings.experimental-features = [ "nix-command" "flakes" ];
-musnix.enable = true;
-
+# SDDM
 services.displayManager.sddm = {
 	enable = true;
 	wayland.enable = true;
@@ -95,6 +99,7 @@ services.displayManager.sddm = {
 	settings.Theme.CursorSize = "24";
 };
 
+# Hyprland
 programs.hyprland = {
 	enable = true;
 	withUWSM = true;
@@ -164,7 +169,7 @@ environment.systemPackages = with pkgs; [
 	wl-clipboard cliphist
 	brightnessctl playerctl
 	imagemagick
-	meh
+	# meh # image viewer
 	dxvk # DXVK setup script
 	catppuccinifier-cli
 	# Programming Languages + Packages
@@ -186,6 +191,8 @@ environment.systemPackages = with pkgs; [
 	bitwarden-desktop
 	obsidian # May need --disable-gpu
 	shotwell
+	filezilla
+	foliate
 	# Theme
 	(pkgs.catppuccin-sddm.override {
 		flavor = "mocha";
@@ -203,10 +210,10 @@ environment.systemPackages = with pkgs; [
 	winetricks wineWow64Packages.yabridge
 	yabridge yabridgectl
 	alsa-lib alsa-utils
-	reaper-wrapped
+	reaper-wrapped pipewire.jack
 	# Music Plugins
 	decent-sampler surge-xt plugdata vital
-	airwindows-lv2 chow-tape-model
+	airwindows-lv2 chow-tape-model cardinal
 ];
 
 }

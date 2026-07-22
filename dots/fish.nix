@@ -9,12 +9,15 @@ programs.fish = {
 	};
 	functions = {
 		clean = "sudo nix-collect-garbage && nix-store --optimise -vv";
+		conf = "cd ~/.config && eza";
+		daw = "pw-jack reaper & disown";
 		dots = "cd /etc/nixos && eza";
 		ff = "fastfetch";
-		reboot = "sudo reboot -f";
+		rb = "sudo reboot -f";
 		rebuild = "sudo nixos-rebuild switch";
-		show-dots = "sudo nvim -p *.nix dots/*.nix";
-		upgrade = "sudo nixos-rebuild switch --upgrade";
+		sd = "shutdown now";
+		show-dots = "sudo nvim -p * dots/*";
+		upgrade = "sudo nix flake update && sudo nixos-rebuild switch";
 	};
 };
 

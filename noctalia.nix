@@ -15,7 +15,6 @@ home-manager.users.algo = {
 			bar = {
 				density = "default";
 				position = "top";
-				floating = true;
 				backgroundOpacity = 0.95;
 				marginVertical = 5;
 				marginHorizontal = 5;
@@ -48,9 +47,7 @@ home-manager.users.algo = {
 					} {
 						id = "Bluetooth";
 					} {
-						id = "plugin:pomodoro";
-					} {
-						formatHorizontal = "HH:mm";
+						formatHorizontal = "yyyy-MM-dd, HH:mm";
 						formatVertical = "HH mm";
 						id = "Clock";
 						useMonospacedFont = true;
@@ -117,19 +114,6 @@ home-manager.users.algo = {
 			      		} {
 						id = "NightLight";
 					}];
-				};
-			};
-		};
-		plugins = {
-			sources = [{
-				enabled = true;
-				name = "Official Noctalia Plugins";
-				url = "https://github.com/noctalia-dev/noctalia-plugins";
-			}];
-			states = {
-				pomodoro = {
-					enabled = true;
-					sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
 				};
 			};
 		};
