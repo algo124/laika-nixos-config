@@ -15,7 +15,7 @@ inputs = {
 	hyprland.url = "github:hyprwm/Hyprland";
 	musnix = { url = "github:musnix/musnix"; };
 	noctalia = {
-      		url = "github:noctalia-dev/noctalia/legacy-v4"; # Change once V5 hits repos
+      		url = "github:noctalia-dev/noctalia";
       		inputs.nixpkgs.follows = "nixpkgs";
     	};
 };
@@ -42,7 +42,9 @@ outputs = inputs@{ self, nixpkgs, catppuccin, home-manager, ... }: {
 				home-manager.backupFileExtension = "bkp";
 				home-manager.overwriteBackup = true;
 				home-manager.users.algo = {
-					imports = [ ./home.nix ];
+					imports = [
+						./home.nix
+					];
 				};
 			}
 		];

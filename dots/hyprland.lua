@@ -39,7 +39,7 @@ local fileManager = "thunar"
 
 hl.on("hyprland.start", function () 
 	hl.exec_cmd("hyprpaper")
-	hl.exec_cmd("noctalia-shell --no-duplicate")
+	hl.exec_cmd("noctalia")
 end)
 
 -------------------------------
@@ -101,7 +101,7 @@ hl.config({
         rounding       = 10,
         rounding_power = 2,
 
-        -- Change transparency of focused and unfocused windows
+        -- Change transparency of focused and unfocused windows
         active_opacity   = 1.0,
         inactive_opacity = 1.0,
 
@@ -182,8 +182,8 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+        force_default_wallpaper = 1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
     },
 })
 
@@ -199,11 +199,8 @@ hl.config({
         kb_model   = "",
         kb_options = "",
         kb_rules   = "",
-
         follow_mouse = 1,
-
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-
         touchpad = {
             natural_scroll = false,
         },
@@ -216,19 +213,12 @@ hl.gesture({
     action = "workspace"
 })
 
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
-})
-
-
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
 
 local mainMod = "SUPER"
+local ipc = "noctalia msg "
 
 -- My Binds
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("element-desktop"))
@@ -236,11 +226,14 @@ hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("librewolf"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("pw-jack reaper"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd("noctalia-shell ipc call launcher toggle"))
+hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("euphonica"))
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("ytmdesktop"))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("obsidian"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("vesktop"))
+hl.bind("F9", hl.dsp.exec_cmd("hyprshot -m window -o ~/Pictures/Screenshots"))
+hl.bind("F10", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 local closeWindowBind = hl.bind(mainMod .. " + K", hl.dsp.window.close())
@@ -263,17 +256,9 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
--- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
-
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
-
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true }) -- mainMod + right click
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
@@ -303,7 +288,6 @@ local suppressMaximizeRule = hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
     name  = "suppress-maximize-events",
     match = { class = ".*" },
-
     suppress_event = "maximize",
 })
 -- suppressMaximizeRule:set_enabled(false)
@@ -319,7 +303,6 @@ hl.window_rule({
         fullscreen = false,
         pin        = false,
     },
-
     no_focus = true,
 })
 
@@ -339,27 +322,22 @@ hl.window_rule({
     float = true,
 })
 
-hl.window_rule({
-	match = { class = "thunar" },
-	opacity = "0.9",
-})
+hl.window_rule({ match = { class = "dev.noctalia.Noctalia" }, float = true, })
 
-hl.window_rule({
-	match = { class = "vesktop" },
-	opacity = "0.9",
-})
+-- Opacity Rules
+hl.window_rule({ match = { class = "thunar" }, opacity = "0.8",})
+hl.window_rule({ match = { class = "vesktop" }, opacity = "0.9",})
+hl.window_rule({ match = { class = "element-desktop" }, opacity = "0.9",})
+hl.window_rule({ match = { class = "REAPER" }, opacity = "0.9",})
+hl.window_rule({ match = { class = "yabridge-host.exe" }, no_max_size = true, opacity = "1",})
+-- maybe incl corner-flung reaper windows be centered, but those with specific locations? no
 
-hl.window_rule({
-	match = { class = "element-desktop" },
-	opacity = "0.9",
-})
+-- Workspace Rules
+hl.workspace_rule({ workspace = "1", monitor = "", persistent = true })
+hl.workspace_rule({ workspace = "2", monitor = "", persistent = true })
+hl.workspace_rule({ workspace = "3", monitor = "", persistent = true })
+hl.workspace_rule({ workspace = "4", monitor = "", persistent = true })
+hl.workspace_rule({ workspace = "5", monitor = "", persistent = true })
 
-hl.window_rule({
-	match = { class = "REAPER" },
-	opacity = "0.95",
-})
-
-hl.window_rule({
-	match = { class = "yabridge-host.exe" },
-	no_max_size = true;
-})
+-- Start on Workspace 1
+hl.on("hyprland.start", function () hl.dispatch(hl.dsp.focus({ workspace = "1" })) end)

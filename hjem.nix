@@ -9,6 +9,7 @@ hjem.users.algo = {
 		".config/fastfetch/config.jsonc".source = ./dots/fastfetch.jsonc;
 		".config/hypr/hyprland.lua".source = ./dots/hyprland.lua;
 		".config/hypr/hyprpaper.conf".source = ./dots/hyprpaper.conf;
+		".config/Element/config.json".source = ./dots/element.json;
 	};
 };
 }
