@@ -40,7 +40,6 @@ boot.loader = {
 networking.hostName = "laika";
 networking.networkmanager.enable = true;
 hardware.bluetooth.enable = true;
-# Allows easy connection to public wifi.
 networking.wireless.enable = true;
 networking.resolvconf.dnsExtensionMechanism = false;
 networking.wireless.userControlled = true;
@@ -131,6 +130,15 @@ xdg.terminal-exec = {
 programs.neovim = {
 	enable = true;
 	defaultEditor = true;
+	configure = {
+		# Makes nvim transparent and thus defaults to terminal opacity
+		customRC = ''
+			highlight Normal guibg=none
+			highlight NonText guibg=none
+			highlight Normal ctermbg=none
+			highlight NonText ctermbg=none
+		'';
+	};
 };
 
 # Fonts
@@ -156,7 +164,7 @@ environment.systemPackages = with pkgs; [
 	nano vim
 	wget
 	fastfetch # alias: ff
-	ripgrep # command: rg
+	ripgrep # grep alt, command: rg
 	bat # cat alt
 	eza # ls alt
 	openssh
@@ -164,13 +172,11 @@ environment.systemPackages = with pkgs; [
 	unzip
 	toybox # Unix Command Line Utils
 	ffmpeg yt-dlp
-	dbus
-	dunst
+	dbus dunst
 	wl-clipboard cliphist
 	brightnessctl playerctl
 	imagemagick
 	# meh # image viewer
-	dxvk # DXVK setup script
 	catppuccinifier-cli
 	# Programming Languages + Packages
 	python313
@@ -189,7 +195,7 @@ environment.systemPackages = with pkgs; [
 	vesktop
 	libreoffice-qt
 	bitwarden-desktop
-	obsidian # May need --disable-gpu
+	obsidian
 	shotwell
 	filezilla
 	foliate
@@ -206,7 +212,7 @@ environment.systemPackages = with pkgs; [
 	kdePackages.kdenlive
 	# Sound & Musicking
 	pwvucontrol wireplumber qpwgraph
-	euphonica nicotine-plus # Soulseek client
+	euphonica nicotine-plus
 	winetricks wineWow64Packages.yabridge
 	yabridge yabridgectl
 	alsa-lib alsa-utils
