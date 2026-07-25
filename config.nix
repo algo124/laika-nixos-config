@@ -163,7 +163,7 @@ environment.systemPackages = with pkgs; [
 	git gh # git & git cli
 	unzip
 	toybox # Unix Command Line Utils
-	ffmpeg
+	ffmpeg yt-dlp
 	dbus
 	dunst
 	wl-clipboard cliphist
