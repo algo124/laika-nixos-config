@@ -15,6 +15,10 @@ programs.fish = {
 		ff = "fastfetch";
 		rb = "sudo reboot -f";
 		rebuild = "sudo nixos-rebuild switch";
+		sample = {
+			argumentNames = ["url" "file" "dir"];
+			body = builtins.readFile ../scripts/sample.fish;
+		};
 		sd = "shutdown now";
 		show-dots = "sudo nvim -p * dots/*";
 		upgrade = "sudo nix flake update && sudo nixos-rebuild switch";
