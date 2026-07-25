@@ -24,8 +24,8 @@ outputs = inputs@{ self, nixpkgs, catppuccin, home-manager, ... }: {
 	nixosConfigurations.laika = nixpkgs.lib.nixosSystem {
 		specialArgs = { inherit inputs; };
 		modules = [
-			./configuration.nix
-			./hardware-configuration.nix
+			./config.nix
+			./hardware-config.nix
 			./noctalia.nix
 			inputs.musnix.nixosModules.musnix
 			inputs.hjem.nixosModules.default
