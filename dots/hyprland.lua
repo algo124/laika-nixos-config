@@ -236,7 +236,7 @@ hl.bind("F10", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots"))
 hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-local closeWindowBind = hl.bind(mainMod .. " + K", hl.dsp.window.close())
+local closeWindowBind = hl.bind(mainMod .. " + K", hl.dsp.window.kill())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
@@ -327,7 +327,7 @@ hl.window_rule({ match = { class = "dev.noctalia.Noctalia" }, float = true, })
 -- Opacity Rules
 hl.window_rule({ match = { class = "thunar" }, opacity = "0.8",})
 hl.window_rule({ match = { class = "vesktop" }, opacity = "0.9",})
-hl.window_rule({ match = { class = "element-desktop" }, opacity = "0.9",})
+hl.window_rule({ match = { class = "element" }, opacity = "0.9",})
 hl.window_rule({ match = { class = "REAPER" }, opacity = "0.9",})
 hl.window_rule({ match = { class = "yabridge-host.exe" }, no_max_size = true, opacity = "1",})
 -- maybe incl corner-flung reaper windows be centered, but those with specific locations? no

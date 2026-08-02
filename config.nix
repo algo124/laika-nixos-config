@@ -137,6 +137,8 @@ programs.neovim = {
 			highlight NonText guibg=none
 			highlight Normal ctermbg=none
 			highlight NonText ctermbg=none
+			set number
+			highlight LineNr guifg=white
 		'';
 	};
 };
@@ -162,7 +164,7 @@ environment.variables = {
 environment.systemPackages = with pkgs; [
 	# Command Line Tools
 	nano vim
-	wget
+	wget htop
 	fastfetch # alias: ff
 	ripgrep # grep alt, command: rg
 	bat # cat alt
@@ -175,7 +177,7 @@ environment.systemPackages = with pkgs; [
 	dbus dunst
 	wl-clipboard cliphist
 	brightnessctl playerctl
-	imagemagick
+	imagemagick file-roller
 	# meh # image viewer
 	catppuccinifier-cli
 	# Programming Languages + Packages
