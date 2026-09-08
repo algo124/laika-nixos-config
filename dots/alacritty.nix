@@ -9,6 +9,7 @@ programs.alacritty = {
 			y = 5;
 		};
 		window.opacity = 0.8;
+		font.size = 12;
 	};
 };
 

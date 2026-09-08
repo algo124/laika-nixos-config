@@ -31,9 +31,9 @@ home-manager.users.algo = {
 			};
 			bar.main = {
 				thickness = 30;
-				scale = 1.2;
+				scale = 1.1;
 				margin_ends = 0;
-				padding = 10;
+				padding = 5;
 				radius_top_left = 0;
 				radius_top_right = 0;
 				shadow = false;

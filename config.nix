@@ -201,6 +201,7 @@ environment.systemPackages = with pkgs; [
 	shotwell
 	filezilla
 	foliate
+	desmume
 	# Theme
 	(pkgs.catppuccin-sddm.override {
 		flavor = "mocha";
@@ -219,9 +220,10 @@ environment.systemPackages = with pkgs; [
 	yabridge yabridgectl
 	alsa-lib alsa-utils
 	reaper-wrapped pipewire.jack
+	reaper-sws-extension
 	# Music Plugins
 	decent-sampler surge-xt plugdata vital
-	airwindows-lv2 chow-tape-model cardinal
+	airwindows-lv2 chow-tape-model paulstretch
 ];
 
 }
