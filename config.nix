@@ -223,7 +223,7 @@ environment.systemPackages = with pkgs; [
 	reaper-wrapped pipewire.jack
 	# Music Plugins
 	decent-sampler surge-xt plugdata vital
-	airwindows-lv2 chow-tape-model paulstretch
+	airwindows-lv2 chow-tape-model
 ];
 
 }
