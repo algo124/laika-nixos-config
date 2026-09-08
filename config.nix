@@ -72,7 +72,8 @@ services.syncthing = {
 
 # Misc
 system.stateVersion = "25.11";
-services.journald.extraConfig = "SystemMaxUse=100M";
+# services.journald.extraConfig = "SystemMaxUse=100M";
+services.journald.settings.Journal = { SystemMaxUse = "100M"; };
 services.libinput.enable = true;
 programs.fish.enable = true;
 nixpkgs.config.allowUnfree = true;
