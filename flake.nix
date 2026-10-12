@@ -18,9 +18,13 @@ inputs = {
       		url = "github:noctalia-dev/noctalia";
       		inputs.nixpkgs.follows = "nixpkgs";
     	};
+	nvf = {
+      		url = "github:NotAShelf/nvf";
+      		inputs.nixpkgs.follows = "nixpkgs";
+    	};
 };
 
-outputs = inputs@{ self, nixpkgs, catppuccin, home-manager, ... }: {
+outputs = inputs@{ self, nixpkgs, catppuccin, home-manager, nvf, ... }: {
 	nixosConfigurations.laika = nixpkgs.lib.nixosSystem {
 		specialArgs = { inherit inputs; };
 		modules = [
@@ -42,7 +46,10 @@ outputs = inputs@{ self, nixpkgs, catppuccin, home-manager, ... }: {
 				home-manager.backupFileExtension = "bkp";
 				home-manager.overwriteBackup = true;
 				home-manager.users.algo = {
-					imports = [ ./home.nix ];
+					imports = [
+						inputs.nvf.homeManagerModules.default
+						./home.nix
+					];
 				};
 			}
 		];
