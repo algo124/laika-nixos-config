@@ -15,6 +15,7 @@ home.nix calls
 - dots/fish.nix
 - dots/git.nix
 - dots/gtk.nix
+- dots/kitty.nix
 - dots/librewolf.nix
 - dots/mpd.nix
 - dots/mpdscribble.nix

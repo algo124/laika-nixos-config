@@ -2,14 +2,14 @@
 description = "Core NixOS flake for Laika";
 
 inputs = {
-	nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+	nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05"; # Update?
 	catppuccin.url = "github:catppuccin/nix";
 	hjem = {
       		url = "github:feel-co/hjem";
       		inputs.nixpkgs.follows = "nixpkgs";
     	};	
 	home-manager = {
-		url = "github:nix-community/home-manager";
+		url = "github:nix-community/home-manager/release-26.05";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
 	hyprland.url = "github:hyprwm/Hyprland";
@@ -42,9 +42,7 @@ outputs = inputs@{ self, nixpkgs, catppuccin, home-manager, ... }: {
 				home-manager.backupFileExtension = "bkp";
 				home-manager.overwriteBackup = true;
 				home-manager.users.algo = {
-					imports = [
-						./home.nix
-					];
+					imports = [ ./home.nix ];
 				};
 			}
 		];
@@ -52,4 +50,3 @@ outputs = inputs@{ self, nixpkgs, catppuccin, home-manager, ... }: {
 };
 
 }
-

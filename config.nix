@@ -72,8 +72,7 @@ services.syncthing = {
 
 # Misc
 system.stateVersion = "25.11";
-# services.journald.extraConfig = "SystemMaxUse=100M";
-services.journald.settings.Journal = { SystemMaxUse = "100M"; };
+services.journald.extraConfig = "SystemMaxUse=100M";
 services.libinput.enable = true;
 programs.fish.enable = true;
 nixpkgs.config.allowUnfree = true;
@@ -123,7 +122,7 @@ services = {
 xdg.terminal-exec = {
 	enable = true;
 	settings = {
-		default = [ "alacritty.desktop" ];
+		default = [ "kitty.desktop" ];
 	};
 };
 
@@ -157,7 +156,7 @@ fonts.packages = with pkgs; [
 # Environment Variables
 environment.variables = {
 	EDITOR = "nvim";
-	TERMINAL = "alacritty";
+	TERMINAL = "kitty";
 	BROWSER = "librewolf";
 };
 
@@ -179,11 +178,8 @@ environment.systemPackages = with pkgs; [
 	wl-clipboard cliphist
 	brightnessctl playerctl
 	imagemagick file-roller
-	# meh # image viewer
+	feh # image viewer
 	catppuccinifier-cli
-	# Programming Languages + Packages
-	python313
-	python313Packages.dbus-python
 	# Basics
 	electron
 	xdg-desktop-portal
@@ -191,6 +187,7 @@ environment.systemPackages = with pkgs; [
 	# Applications
 	vlc
 	alacritty
+	kitty
 	thunar
 	librewolf
 	zoom-us

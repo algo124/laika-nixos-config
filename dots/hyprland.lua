@@ -9,14 +9,14 @@ hl.monitor({
 })
 
 -- Program name setting
-local terminal    = "alacritty"
+local terminal    = "kitty"
 local fileManager = "thunar"
 
 -- Catppuccin Color Setting
 local pink = "rgb(f5c2e7)"
 
 -- Autostart
-hl.on("hyprland.start", function () 
+hl.on("hyprland.start", function ()
 	hl.exec_cmd("hyprpaper") -- loads in quickly
 	hl.exec_cmd("noctalia")
 end)
