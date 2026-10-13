@@ -130,15 +130,6 @@ xdg.terminal-exec = {
 programs.neovim = {
 	enable = true;
 	defaultEditor = true;
-	configure = {
-		# Makes nvim transparent and thus defaults to terminal opacity
-		customRC = ''
-			highlight Normal guibg=none
-			highlight NonText guibg=none
-			highlight Normal ctermbg=none
-			highlight NonText ctermbg=none
-		'';
-	};
 };
 
 # Fonts
@@ -164,6 +155,7 @@ environment.systemPackages = with pkgs; [
 	nano vim
 	wget htop
 	fastfetch # alias: ff
+        fd # find
 	ripgrep # grep alt, command: rg
 	bat # cat alt
 	eza # ls alt
@@ -195,9 +187,7 @@ environment.systemPackages = with pkgs; [
 	bitwarden-desktop
 	obsidian
 	shotwell
-	filezilla
 	foliate
-	desmume
 	# Theme
 	(pkgs.catppuccin-sddm.override {
 		flavor = "mocha";
