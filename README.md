@@ -10,7 +10,6 @@ flake.nix calls
 - noctalia.nix
 
 home.nix calls
-- dots/alacritty.nix
 - dots/cliphist.nix
 - dots/fish.nix
 - dots/git.nix
@@ -29,7 +28,7 @@ hjem.nix calls
 # Extra Things Necessary to Configure
 - Syncthing folders
 - Thunar connect to terminal command
- - Edit -> Configure custom actions -> Open Terminal Here -> change command to `alacritty`
+ - Edit -> Configure custom actions -> Open Terminal Here -> change command to `kitty`
 - College wifi (download shell script to connect)
 - Plugin installers for music production
 - Catppuccin-GTK-Theme install

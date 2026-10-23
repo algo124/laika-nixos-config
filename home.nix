@@ -10,7 +10,6 @@ xdg.enable = true;
 wayland.windowManager.hyprland.systemd.enable = false;
 
 imports = [
-	./dots/alacritty.nix
 	./dots/cliphist.nix
 	./dots/fish.nix
 	./dots/git.nix

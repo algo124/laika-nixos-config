@@ -184,7 +184,6 @@ environment.systemPackages = with pkgs; [
 	xdg-desktop-portal-gtk
 	# Applications
 	vlc
-	alacritty
 	kitty
 	thunar
 	librewolf
