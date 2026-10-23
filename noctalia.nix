@@ -11,14 +11,11 @@ home-manager.users.algo = {
         		theme = {
           			mode = "dark";
           			source = "builtin";
-          			builtin = "Catppuccin";
+          			builtin = "Rosé Pine";
         		};
 			wallpaper = {
 				enabled = true;
 				directory = "~/Pictures/Wallpaper";
-			};
-			wallpaper.default = {
-				path = "~/Pictures/Wallpaper/rainbow-guys.png";
 			};
 			shell = {
 				avatar_path = "~/Pictures/Icons/8bitDog.jpg";
@@ -58,6 +55,7 @@ home-manager.users.algo = {
 			location = {
 				address = "Portland, OR";
 			};
+                        weather.unit = "imperial";
 			widget.control-center = {
 				glyph = "star";
 				custom_image = "~/Pictures/Icons/nix-snowflake-white.svg";

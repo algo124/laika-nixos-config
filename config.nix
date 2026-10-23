@@ -26,7 +26,10 @@ in
 {
 
 # Temp (?)
-nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
+nixpkgs.config.permittedInsecurePackages = [
+        "electron-39.8.10"
+        "olm-3.2.16"
+];
 
 # Boot Loader
 boot.loader = {
@@ -157,6 +160,7 @@ environment.systemPackages = with pkgs; [
 	fastfetch # alias: ff
         fd # find
 	ripgrep # grep alt, command: rg
+        repgrep # find and replace
 	bat # cat alt
 	eza # ls alt
 	openssh
@@ -168,8 +172,12 @@ environment.systemPackages = with pkgs; [
 	wl-clipboard cliphist
 	brightnessctl playerctl
 	imagemagick file-roller
+        starship # cli custom prompt
 	feh # image viewer
-	catppuccinifier-cli
+        zip
+        yazi pomodoro
+        tuisky gomuks # Bluesky + Matrix tui
+        wiki-tui # Wikipedia tui
 	# Basics
 	electron
 	xdg-desktop-portal
@@ -188,6 +196,8 @@ environment.systemPackages = with pkgs; [
 	obsidian
 	shotwell
 	foliate
+        vscode # for CS 302 class
+        openvpn # for access to MCECS servers easily
 	# Theme
 	(pkgs.catppuccin-sddm.override {
 		flavor = "mocha";

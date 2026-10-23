@@ -3,7 +3,7 @@
 
 programs.fish = {
 	enable = true;
-	interactiveShellInit = "set fish_greeting"; # Disable greeting
+	interactiveShellInit = "set fish_greeting\nstarship init fish | source";
 	shellAbbrs = {
 		v = "nvim";
 	};
@@ -20,7 +20,7 @@ programs.fish = {
 			body = builtins.readFile ../scripts/sample.fish;
 		};
 		sd = "shutdown now";
-		show-dots = "sudo nvim -p * dots/*";
+		show-dots = "sudo nvim -p * dots/* scripts/*";
 		upgrade = "sudo nix flake update && sudo nixos-rebuild switch";
 	};
 };
