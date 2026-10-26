@@ -28,7 +28,6 @@ in
 # Temp (?)
 nixpkgs.config.permittedInsecurePackages = [
         "electron-39.8.10"
-        "olm-3.2.16"
 ];
 
 # Boot Loader
@@ -176,8 +175,8 @@ environment.systemPackages = with pkgs; [
 	feh # image viewer
         zip
         yazi pomodoro
-        tuisky gomuks # Bluesky + Matrix tui
         wiki-tui # Wikipedia tui
+        speedtest-cli
 	# Basics
 	electron
 	xdg-desktop-portal

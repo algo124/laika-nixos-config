@@ -9,7 +9,7 @@ programs.kitty = {
 		enable_audio_bell = false;
 		scrollback_lines = 10000;
 		window_padding_width = 2;
-		background_opacity = "0.7";
+		background_opacity = "0.8";
                 cursor = "#ffffff";
 	};
 };

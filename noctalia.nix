@@ -43,6 +43,7 @@ home-manager.users.algo = {
 				];
 				center = [ "workspaces" ];
 				end = [ 
+                                        "screenshot"
 					"network"
 					"bluetooth"
 					"volume"
@@ -58,7 +59,7 @@ home-manager.users.algo = {
                         weather.unit = "imperial";
 			widget.control-center = {
 				glyph = "star";
-				custom_image = "~/Pictures/Icons/nix-snowflake-white.svg";
+				custom_image="~/Pictures/Icons/nix-snowflake-black.svg";
 			};
 			widget.launcher = {
 				glyph = "rocket";

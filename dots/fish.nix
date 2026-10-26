@@ -8,6 +8,7 @@ programs.fish = {
 		v = "nvim";
 	};
 	functions = {
+                atlas = "nvim ~/Atlas/*Atlas/*Atlas.md";
 		clean = "sudo nix-collect-garbage && nix-store --optimise -vv";
 		conf = "cd ~/.config && eza";
 		daw = "pw-jack reaper & disown";
@@ -21,6 +22,7 @@ programs.fish = {
 		};
 		sd = "shutdown now";
 		show-dots = "sudo nvim -p * dots/* scripts/*";
+                tasks = "nvim ~/Atlas/*Atlas/Tasks.md";
 		upgrade = "sudo nix flake update && sudo nixos-rebuild switch";
 	};
 };
